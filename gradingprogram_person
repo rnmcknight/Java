@@ -1,0 +1,73 @@
+
+package gradesv2;
+
+/**
+ *
+ * @author xcalv
+ */
+public class Person {
+    private String firstName;
+    private String lastName;
+    private int bMonth;
+    private int bDay;
+    private int bYear;
+
+    public Person() {
+    }
+
+    public Person(String firstName, String lastName, int month, int day, int year) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.bMonth = month;
+        this.bDay = day;
+        this.bYear = year;
+
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getbMonth() {
+        return bMonth;
+    }
+
+    public int getbDay() {
+        return bDay;
+    }
+
+    public int getbYear() {
+        return bYear;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setbMonth(int bMonth) {
+        this.bMonth = bMonth;
+    }
+
+    public void setbDay(int bDay) {
+        this.bDay = bDay;
+    }
+
+    public void setbYear(int bYear) {
+        this.bYear = bYear;
+    }
+    @Override
+    public String toString(){
+        return "First Name: " + firstName + "\nLast Name: " + lastName + "\nD.O.B.: "+ bMonth+"/"+bDay+"/"+bYear;
+    
+}
+    
+    
+}
