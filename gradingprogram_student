@@ -1,0 +1,113 @@
+
+
+package gradesv2;
+import java.util.ArrayList;
+import java.util.Objects;
+
+/**
+ *
+ * @author xcalv
+ */
+public class Student extends Person {
+    private String id;
+    private String gradeLevel;
+    private ArrayList<String> grades = new ArrayList<>();
+    /**
+     * Default constructor
+     */
+    public Student() {
+        super();
+    }
+    /**
+     * Constructor for the student class
+     * @param id
+     * @param gradeLevel
+     * @param firstName
+     * @param lastName
+     * @param month
+     * @param day
+     * @param year 
+     */
+    public Student(String id, String gradeLevel, String firstName, String lastName, int month, int day, int year) {
+        super(firstName, lastName, month, day, year);
+        this.id = id;
+        this.gradeLevel = gradeLevel;
+    }
+    /**
+     * Method to return a students ID
+     * @return Students unique ID
+     */
+    public String getId() {
+        return id;
+    }
+    /**
+     * Method to return a students grade level 
+     * @return The student's current grade level 
+     */
+    public String getGradeLevel() {
+        return gradeLevel;
+    }
+    /**
+     * Method to return a students grades 
+     * @return All of the students current grades 
+     */
+    public ArrayList<String> getGrades() {
+        return grades;
+    }
+    /**
+     * Method to set or change a students ID
+     * @param id Students unique ID
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+    /**
+     * Method to set or change a students grade level
+     * @param gradeLevel students grade level
+     */
+    public void setGradeLevel(String gradeLevel) {
+        this.gradeLevel = gradeLevel;
+    }
+    /**
+     * Method to add a grade to a student
+     * @param grade the students grade to be added
+     */
+    public void addGrades(String grade) {
+        grades.add(grade);
+    }
+    
+    @Override 
+    public String toString(){
+        return "ID: "+id+"\nGrade Level: "+gradeLevel+"\n"+super.toString();
+    }
+    /**
+     * Method to check if two student objects are equal
+     * @param other object to be compared to 
+     * @return True if objects are equal
+     */
+    @Override
+    public boolean equals(Object other){
+        boolean tf = false;
+        if (other == this){
+            return true;
+        }
+        if (other instanceof Student){
+
+            if (this.id.matches(((Student) other).id)&& this.gradeLevel.matches(((Student) other).gradeLevel) && this.getFirstName().matches(((Student) other).getFirstName())
+                    && this.getLastName().matches(((Student) other).getLastName()) && this.getbMonth() == ((Student) other).getbMonth() && this.getbDay()==((Student) other).getbDay()
+                    && this.getbYear()==((Student) other).getbYear()){
+                tf = true;
+            }
+        }
+        return tf;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.gradeLevel);
+        return hash;
+    }
+    
+}
