@@ -1,0 +1,243 @@
+using System;
+using System.Numerics;
+using static Chapter06.Program;
+
+namespace Chapter06
+{
+    class Program
+    {
+
+    public class RandomNumbers
+    {
+        public static void GenerateAndAnalyze()
+        {
+            Random random = new Random();
+            int oddCount = 0, minValue = int.MaxValue, maxValue = int.MinValue;
+
+            for (int i = 0; i < 1000; i++)
+            {
+                int randomNumber = random.Next(0, 100001);
+                if (randomNumber % 2 != 0)
+                    oddCount++;
+
+                if (randomNumber < minValue)
+                    minValue = randomNumber;
+
+                if (randomNumber > maxValue)
+                    maxValue = randomNumber;
+            }
+
+            Console.WriteLine($"Number of odd values: {oddCount}");
+            Console.WriteLine($"Smallest value: {minValue}");
+            Console.WriteLine($"Largest value: {maxValue}");
+        }
+    }
+
+    public class InputValidator
+    {
+        public static void ValidateInput()
+        {
+            int validCount = 0, invalidCount = 0;
+            string input;
+
+            do
+            {
+                Console.Write("Enter a positive integer less than 100 (or type 'done' to finish): ");
+                input = Console.ReadLine();
+
+                if (input.ToLower() == "done")
+                    break;
+
+                if (int.TryParse(input, out int number) && number > 0 && number < 100)
+                    validCount++;
+                else
+                    invalidCount++;
+            }
+            while (true);
+
+            Console.WriteLine($"Number of valid entries: {validCount}");
+            Console.WriteLine($"Number of invalid entries: {invalidCount}");
+        }
+    }
+
+    public class ScoreCalculator
+    {
+        public static void CalculateAverageAndGrade()
+        {
+            int total = 0, count = 0;
+            string input;
+
+            do
+            {
+                Console.Write("Enter a score between 0 and 100 (or type '-1' to finish): ");
+                input = Console.ReadLine();
+
+                if (int.TryParse(input, out int score) && score >= 0 && score <= 100)
+                {
+                    total += score;
+                    count++;
+                }
+                else if (input == "-1")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input, please enter a valid score.");
+                }
+            }
+            while (true);
+
+            if (count > 0)
+            {
+                double average = (double)total / count;
+                Console.WriteLine($"Average score: {average:F2}");
+
+                string grade = average >= 90 ? "A" :
+                               average >= 80 ? "B" :
+                               average >= 70 ? "C" :
+                               average >= 60 ? "D" : "F";
+
+                Console.WriteLine($"Recorded grade: {grade}");
+            }
+            else
+            {
+                Console.WriteLine("No valid scores were entered.");
+            }
+        }
+    }
+
+    public class MultiplicationTable
+    {
+        public static void GenerateTable()
+        {
+            Console.Write("Enter the starting base (2-8): ");
+            if (!int.TryParse(Console.ReadLine(), out int startBase) || startBase < 2 || startBase > 8)
+            {
+                Console.WriteLine("Invalid starting base value. Please enter a value between 2 and 8.");
+                return;
+            }
+
+            Console.Write("Enter the ending base (2-8): ");
+            if (!int.TryParse(Console.ReadLine(), out int endBase) || endBase < 2 || endBase > 8 || endBase < startBase)
+            {
+                Console.WriteLine("Invalid ending base value. Please enter a value between 2 and 8, greater than or equal to the starting base.");
+                return;
+            }
+
+            Console.WriteLine("\nMultiplication Table:");
+            for (int row = 1; row <= 25; row++)
+            {
+                for (int col = startBase; col <= endBase; col++)
+                {
+                    Console.Write($"{row * col,5} ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+
+    public class JugglerSequence
+    {
+        public static void CalculateJugglerSequence()
+        {
+            Console.Write("Enter a positive integer between 1 and 50: ");
+            if (!int.TryParse(Console.ReadLine(), out int number) || number < 1 || number > 50)
+            {
+                Console.WriteLine("Invalid input. Please enter a number between 1 and 50.");
+                return;
+            }
+
+            BigInteger current = number;
+            BigInteger maxValue = current;
+            int steps = 0;
+
+            Console.WriteLine($"\nJuggler Sequence starting with {number}:");
+
+            while (current != 1)
+            {
+                Console.Write($"{current} ");
+
+                if (current % 2 == 0)
+                {
+                    current = (BigInteger)Math.Sqrt((double)current);
+                }
+                else
+                {
+                    current = (BigInteger)Math.Pow((double)current, 1.5);
+                }
+
+                if (current > maxValue)
+                    maxValue = current;
+
+                steps++;
+            }
+            Console.WriteLine("1");
+            Console.WriteLine($"Maximum value in sequence: {maxValue}");
+            Console.WriteLine($"Total steps to reach 1: {steps}");
+        }
+    }
+        static void Main(string[] args)
+        {
+            Tester.RunAllTests();
+        }
+    }
+
+    public static class Tester
+    {
+        public static void RunAllTests()
+        {
+            Console.WriteLine("Running Task 1: Generate 1000 Random Numbers");
+            RandomNumbers.GenerateAndAnalyze();
+            Console.WriteLine("\n-------------------------------------------\n");
+
+            Console.WriteLine("Running Task 2: Input Validation");
+            InputValidator.ValidateInput();
+            Console.WriteLine("\n-------------------------------------------\n");
+
+            Console.WriteLine("Running Task 3: Calculate Average and Grade");
+            ScoreCalculator.CalculateAverageAndGrade();
+            Console.WriteLine("\n-------------------------------------------\n");
+
+            Console.WriteLine("Running Task 4: Multiplication Table");
+            MultiplicationTable.GenerateTable();
+            Console.WriteLine("\n-------------------------------------------\n");
+
+            Console.WriteLine("Running Task 5: Juggler's Sequence");
+            JugglerSequence.CalculateJugglerSequence();
+            Console.WriteLine("\n-------------------------------------------\n");
+        }
+
+        // You could also add methods here to run individual tests
+        public static void TestRandomNumbers()
+        {
+            Console.WriteLine("Testing Task 1: Generate Random Numbers");
+            RandomNumbers.GenerateAndAnalyze();
+        }
+
+        public static void TestInputValidation()
+        {
+            Console.WriteLine("Testing Task 2: Input Validation");
+            InputValidator.ValidateInput();
+        }
+
+        public static void TestScoreCalculator()
+        {
+            Console.WriteLine("Testing Task 3: Calculate Average and Grade");
+            ScoreCalculator.CalculateAverageAndGrade();
+        }
+
+        public static void TestMultiplicationTable()
+        {
+            Console.WriteLine("Testing Task 4: Multiplication Table");
+            MultiplicationTable.GenerateTable();
+        }
+
+        public static void TestJugglerSequence()
+        {
+            Console.WriteLine("Testing Task 5: Juggler's Sequence");
+            JugglerSequence.CalculateJugglerSequence();
+        }
+    }
+
+}
