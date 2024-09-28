@@ -1,0 +1,73 @@
+import java.util.ArrayList;
+
+/**
+ * This class represents multiple students.
+ */
+public class StudentManager {
+    private ArrayList<Student> students;
+
+    /**
+     * This is the constructor for the StudentManager class.
+     * 
+     * @param students The students to add to the database.
+     */
+    public StudentManager() {
+        students = new ArrayList<Student>();
+    }
+
+    /**
+     * This method adds a student to the database.
+     */
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+    
+
+    /**
+     * This method returns a student from the database.
+     * 
+     * @param id The ID of the student to return.
+     * @return The student with the given ID.
+     */
+    public Student getStudent(String id) {
+        for (Student student : students) {
+            if (student.getID().equals(id)) {
+                return student;
+            }
+        }
+        return null;
+    }
+    
+    
+    /**
+     * This method removes a student from the database.
+     * 
+     * @param student The student to remove.
+     */
+    public void removeStudent(Student student) {
+        students.remove(student);
+    }
+
+    /**
+     * This method modifies a student's information.
+     * 
+     * @param student The student to modify.
+     * @param firstName The new first name of the student.
+     * @param lastName The new last name of the student.
+     * @param id The new ID of the student.
+     */
+    public void modifyStudent(Student student, String firstName, String lastName, String id) {
+        student.setFirstName(firstName);
+        student.setLastName(lastName);
+        student.setID(id);
+    }
+
+    /**
+     * This method returns all students in the database.
+     * 
+     * @return All students in the database.
+     */
+    public ArrayList<Student> getStudents() {
+        return students;
+    }
+}
