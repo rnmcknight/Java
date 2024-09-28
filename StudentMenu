@@ -1,0 +1,184 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+* This class allows a user to manage a database of students.
+*/
+public class StudentMenu {
+    private StudentManager studentManager;
+    private Scanner scanner;
+    
+
+    /**
+    * This constructor creates a StudentMenu object.
+    */
+    public StudentMenu() {
+        studentManager = new StudentManager();
+        scanner = new Scanner(System.in);
+    }
+
+    /**
+    * This method displays the user menu.
+    */
+    public void displayMenu() {
+        System.out.println("1. Add Student");
+        System.out.println("2. Remove Student");
+        System.out.println("3. Modify Student");
+        System.out.println("4. Display Students");
+        System.out.println("5. Display Students final grades");
+        System.out.println("6. Exit");
+    }
+
+    /**
+    * This method gets the user's choice.
+    * 
+    * @return The user's choice.
+    */
+    public int getChoice() {
+        return scanner.nextInt();
+    }
+
+    /**
+     * This method allows the user to add a student to the database.
+     */
+    public void addStudent() {
+        System.out.println("Enter the student's first name:");
+        String firstName = scanner.next();
+        System.out.println("Enter the student's last name:");
+        String lastName = scanner.next();
+        System.out.println("Enter the student's ID:");
+        String id = scanner.next();
+        scanner.nextLine(); 
+        
+        // Prompt the user to enter the quiz grades
+        System.out.println("Enter the student's quiz grades (separated by spaces):");
+        ArrayList<Double> quizGrades = new ArrayList<>();
+        String[] quizGradesStr = scanner.nextLine().trim().split("\\s+");
+        for (String grade : quizGradesStr) {
+            if (!grade.isEmpty()) {
+                quizGrades.add(Double.parseDouble(grade));
+            }  
+        }
+        
+        // Prompt the user to enter the lab grades
+        System.out.println("Enter the student's lab grades (separated by spaces):");
+        ArrayList<Double> labGrades = new ArrayList<>();
+        String[] labGradesStr = scanner.nextLine().trim().split("\\s+");
+        for (String grade : labGradesStr) {
+            if (!grade.isEmpty()) {
+                labGrades.add(Double.parseDouble(grade));
+            }         
+        }
+        
+        // Prompt the user to enter the project grade
+        System.out.println("Enter the student's project grade:");
+        double projectGrade = scanner.nextDouble();
+        
+        // Prompt the user to enter the midterm grade
+        System.out.println("Enter the student's midterm grade:");
+        double midtermGrade = scanner.nextDouble();
+        
+        // Prompt the user to enter the final grade
+        System.out.println("Enter the student's final grade:");
+        double finalGrade = scanner.nextDouble();
+        
+        // Prompt the user to enter the attendance grade
+        System.out.println("Enter the student's attendance grade:");
+        double attendanceGrade = scanner.nextDouble();
+        
+        // Create the student and add them to the database
+        StudentGrades grades = new StudentGrades(quizGrades, labGrades, projectGrade, midtermGrade, finalGrade, attendanceGrade);
+        Student student = new Student(firstName, lastName, id, grades);
+        studentManager.addStudent(student);
+        System.out.println("Student added.");
+    }
+    
+
+    
+
+    /**
+    * This method removes a student from the database.
+    */
+    public void removeStudent() {
+        System.out.println("Enter the student's ID:");
+        String id = scanner.next();
+        Student student = studentManager.getStudent(id);
+        studentManager.removeStudent(student);
+        System.out.println("Student removed.");
+    }
+    
+
+    /**
+    * This method modifies a student's information.
+    */
+    public void modifyStudent() {
+        System.out.println("Enter the student's ID:");
+        String id = scanner.next();
+        Student student = studentManager.getStudent(id);
+        System.out.println("Enter the student's new first name:");
+        String firstName = scanner.next();
+        System.out.println("Enter the student's new last name:");
+        String lastName = scanner.next();
+        studentManager.modifyStudent(student, firstName, lastName, id);
+    }
+
+    /**
+    * This method displays all students in the database.
+    */
+    public void displayStudents() {
+        ArrayList<Student> students = studentManager.getStudents();
+        for (Student student : students) {
+            System.out.println(student);
+        }
+    }
+
+    
+
+    /**
+     * This method searches for a student in the database.
+     * and displays their final grade.
+     */
+    public void searchStudent() {
+        scanner.nextLine(); 
+        System.out.println("Enter the student's first name or ID:");
+        String searchInput = scanner.nextLine();
+        Student student = studentManager.getStudent(searchInput);
+        System.out.println(student + "\nStudent: " + student.getFirstName() + "\n has a total grade average of " + student.getGrades().getTotalGradeAverage() + ",\n a letter grade of " + student.getGrades().getLetterGrade() + ",\n and a GPA of " + student.getGrades().getGPA() + ".");
+    }
+    
+
+
+    /**
+    * This method runs the program.
+    */
+    public void run() {
+        int choice = 0;
+        while (choice != 6) {
+            displayMenu();
+            choice = getChoice();
+            switch (choice) {
+                case 1:
+                    addStudent();
+                    break;
+                case 2:
+                    removeStudent();
+                    break;
+                case 3:
+                    modifyStudent();
+                    break;
+                case 4:
+                    displayStudents();
+                    break;
+                case 5:
+                    searchStudent();
+                    break;
+                case 6:
+                    System.out.println("Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+        }
+
+    }
+}
