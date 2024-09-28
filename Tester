@@ -1,0 +1,190 @@
+import java.util.ArrayList;
+
+
+// Tests all of the methods.
+public class Tester {
+    public static void main(String[] args) {
+        
+        // Create a new student.
+        Student billy = new Student("Billy", "Madison", "00001", new StudentGrades());
+
+        // Create the quiz grades.
+        ArrayList<Double> quizGrades = new ArrayList<>();
+        quizGrades.add(79.0);
+        quizGrades.add(78.0);
+        quizGrades.add(77.0);
+        quizGrades.add(76.0);
+        quizGrades.add(75.0);
+
+        // Create the lab grades.
+        ArrayList<Double> labGrades = new ArrayList<>();
+        labGrades.add(74.0);
+        labGrades.add(73.0);
+        labGrades.add(72.0);
+        labGrades.add(71.0);
+        labGrades.add(70.0);
+
+        // Set the grades.
+        billy.setGrades(new StudentGrades(quizGrades, labGrades, 76.0, 79.0, 73.0, 96.0));
+
+        // Print the grades.
+        System.out.println(billy.getFirstName() + " " + billy.getLastName() + " " + billy.getID());
+        System.out.println(billy.getGrades().getQuizGrades());
+        System.out.println(billy.getGrades().getLabGrades());
+        System.out.println(billy.getGrades().getProjectGrade());
+        System.out.println(billy.getGrades().getMidtermGrade());
+        System.out.println(billy.getGrades().getFinalGrade());
+        System.out.println(billy.getGrades().getAttendanceGrade());
+        System.out.println(billy.getGrades().getQuizAverage());
+        System.out.println(billy.getGrades().getLabAverage());
+        System.out.println(billy.getGrades().getTotalGradeAverage());
+        System.out.println(billy.getGrades().getLetterGrade());
+        System.out.println(billy.getGrades().getGPA());
+
+        // Create a new student.
+        Student bobby = new Student("Bobby", "Bouche", "00002", new StudentGrades());
+
+        // Create the quiz grades.
+        ArrayList<Double> quizGrades2 = new ArrayList<>();
+        quizGrades2.add(85.0);
+        quizGrades2.add(90.0);
+        quizGrades2.add(92.0);
+        quizGrades2.add(88.0);
+        quizGrades2.add(89.0);
+
+        // Create the lab grades.
+        ArrayList<Double> labGrades2 = new ArrayList<>();
+        labGrades2.add(92.0);
+        labGrades2.add(87.0);
+        labGrades2.add(90.0);
+        labGrades2.add(89.0);
+        labGrades2.add(91.0);
+
+        // Set the grades.
+        bobby.setGrades(new StudentGrades(quizGrades2, labGrades2, 85.0, 90.0, 92.0, 88.0));
+
+        // Print the grades.
+        System.out.println(bobby.getFirstName() + " " + bobby.getLastName() + " " + bobby.getID());
+        System.out.println(bobby.getGrades().getQuizGrades());
+        System.out.println(bobby.getGrades().getLabGrades());
+        System.out.println(bobby.getGrades().getProjectGrade());
+        System.out.println(bobby.getGrades().getMidtermGrade());
+        System.out.println(bobby.getGrades().getFinalGrade());
+        System.out.println(bobby.getGrades().getAttendanceGrade());
+        System.out.println(bobby.getGrades().getQuizAverage());
+        System.out.println(bobby.getGrades().getLabAverage());
+        System.out.println(bobby.getGrades().getTotalGradeAverage());
+        System.out.println(bobby.getGrades().getLetterGrade());
+        System.out.println(bobby.getGrades().getGPA());
+
+        // Create a new student.
+        Student vincent = new Student("Vincent", "Vega", "00003", new StudentGrades());
+
+        // Create the quiz grades.
+        ArrayList<Double> quizGrades3 = new ArrayList<>();
+        quizGrades3.add(90.0);
+        quizGrades3.add(95.0);
+        quizGrades3.add(97.0);
+        quizGrades3.add(93.0);
+        quizGrades3.add(94.0);
+
+        // Create the lab grades.
+        ArrayList<Double> labGrades3 = new ArrayList<>();
+        labGrades3.add(97.0);
+        labGrades3.add(92.0);
+        labGrades3.add(95.0);
+        labGrades3.add(94.0);
+        labGrades3.add(96.0);
+
+        // Set the grades.
+        vincent.setGrades(new StudentGrades(quizGrades3, labGrades3, 90.0, 95.0, 97.0, 93.0));
+
+        // Print the grades.
+        System.out.println(vincent.getFirstName() + " " + vincent.getLastName() + " " + vincent.getID());
+        System.out.println(vincent.getGrades().getQuizGrades());
+        System.out.println(vincent.getGrades().getLabGrades());
+        System.out.println(vincent.getGrades().getProjectGrade());
+        System.out.println(vincent.getGrades().getMidtermGrade());
+        System.out.println(vincent.getGrades().getFinalGrade());
+        System.out.println(vincent.getGrades().getAttendanceGrade());
+        System.out.println(vincent.getGrades().getQuizAverage());
+        System.out.println(vincent.getGrades().getLabAverage());
+        System.out.println(vincent.getGrades().getTotalGradeAverage());
+        System.out.println(vincent.getGrades().getLetterGrade());
+        System.out.println(vincent.getGrades().getGPA());
+
+        // Create a new student.
+        Student mia = new Student("Mia", "Wallace", "00004", new StudentGrades());
+
+        // Create the quiz grades.
+        ArrayList<Double> quizGrades4 = new ArrayList<>();
+        quizGrades4.add(66.0);
+        quizGrades4.add(60.0);
+        quizGrades4.add(70.0);
+        quizGrades4.add(55.0);
+        quizGrades4.add(60.0);
+
+        // Create the lab grades.
+        ArrayList<Double> labGrades4 = new ArrayList<>();
+        labGrades4.add(60.0);
+        labGrades4.add(66.0);
+        labGrades4.add(90.0);
+        labGrades4.add(67.0);
+        labGrades4.add(60.0);
+        
+        // Set the grades.
+        mia.setGrades(new StudentGrades(quizGrades4, labGrades4, 66.0, 64.0, 60.0, 95.0));
+
+        // Print the grades.
+        System.out.println(mia.getFirstName() + " " + mia.getLastName() + " " + mia.getID());
+        System.out.println(mia.getGrades().getQuizGrades());
+        System.out.println(mia.getGrades().getLabGrades());
+        System.out.println(mia.getGrades().getProjectGrade());
+        System.out.println(mia.getGrades().getMidtermGrade());
+        System.out.println(mia.getGrades().getFinalGrade());
+        System.out.println(mia.getGrades().getAttendanceGrade());
+        System.out.println(mia.getGrades().getQuizAverage());
+        System.out.println(mia.getGrades().getLabAverage());
+        System.out.println(mia.getGrades().getTotalGradeAverage());
+        System.out.println(mia.getGrades().getLetterGrade());
+        System.out.println(mia.getGrades().getGPA());
+
+        // Create a new student.
+        Student elizabeth = new Student("Elizabeth", "Swann", "00005", new StudentGrades());
+
+        // Create the quiz grades.
+        ArrayList<Double> quizGrades5 = new ArrayList<>();
+        quizGrades5.add(100.0);
+        quizGrades5.add(95.0);
+        quizGrades5.add(100.0);
+        quizGrades5.add(95.0);
+        quizGrades5.add(100.0);
+        
+        // Create the lab grades.
+        ArrayList<Double> labGrades5 = new ArrayList<>();
+        labGrades5.add(95.0);
+        labGrades5.add(100.0);
+        labGrades5.add(95.0);
+        labGrades5.add(100.0);
+        labGrades5.add(95.0);
+        
+        // Set the grades.
+        elizabeth.setGrades(new StudentGrades(quizGrades5, labGrades5, 100.0, 95.0, 100.0, 95.0));
+
+        // Print the grades.
+        System.out.println(elizabeth.getFirstName() + " " + elizabeth.getLastName() + " " + elizabeth.getID());
+        System.out.println(elizabeth.getGrades().getQuizGrades());
+        System.out.println(elizabeth.getGrades().getLabGrades());
+        System.out.println(elizabeth.getGrades().getProjectGrade());
+        System.out.println(elizabeth.getGrades().getMidtermGrade());
+        System.out.println(elizabeth.getGrades().getFinalGrade());
+        System.out.println(elizabeth.getGrades().getAttendanceGrade());
+        System.out.println(elizabeth.getGrades().getQuizAverage());
+        System.out.println(elizabeth.getGrades().getLabAverage());
+        System.out.println(elizabeth.getGrades().getTotalGradeAverage());
+        System.out.println(elizabeth.getGrades().getLetterGrade());
+        System.out.println(elizabeth.getGrades().getGPA());
+
+
+    }
+}
