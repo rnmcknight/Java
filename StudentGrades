@@ -1,0 +1,125 @@
+/**
+ * This class represents a student.
+ */
+public class Student {
+    private String firstName;
+    private String lastName;
+    private String id;
+    private StudentGrades grades;
+    
+
+
+    /**
+     * This is the constructor for the Student class.
+     * 
+     * @param firstName The first name of the student.
+     * @param lastName The last name of the student.
+     * @param id The ID of the student.
+     * @param grades The grades of the student.
+     */
+    public Student(String firstName, String lastName, String id, StudentGrades grades) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.id = id;
+        this.grades = grades;
+        
+    }
+
+    /**
+     * This is the default constructor for the Student class.
+     */
+    public Student() {
+        this.firstName = "";
+        this.lastName = "";
+        this.id = "";
+        this.grades = new StudentGrades();
+    }
+
+    /**
+     * this method overrides the toString method to return the student's information.
+     */
+    @Override
+    public String toString() {
+        return "Student{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", id=" + id +
+                ", grades=" + grades.toString() + 
+                '}';
+    }
+
+
+    /**
+     * This method returns the first name of the student.
+     * 
+     * @return The first name of the student.
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * This method sets the first name of the student.
+     * 
+     * @param firstName The first name of the student.
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
+     * This method returns the last name of the student.
+     * 
+     * @return The last name of the student.
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * This method sets the last name of the student.
+     * 
+     * @param lastName The last name of the student.
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    /**
+     * This method returns the ID of the student.
+     * 
+     * @return The ID of the student.
+     */
+    public String getID() {
+        return id;
+    }
+
+    /**
+     * This method sets the ID of the student.
+     * 
+     * @param ID The ID of the student.
+     */
+    public void setID(String id) {
+        this.id = id;
+    }
+
+    /**
+     * This method returns the student's grades.
+     * 
+     * @return The student's grades.
+     */
+    public StudentGrades getGrades() {
+        return grades;
+    }
+
+    /**
+     * This method sets the student's grades.
+     * 
+     * @param grades The student's grades.
+     */
+    public void setGrades(StudentGrades grades) {
+        this.grades = grades;
+    
+    }
+    
+}
