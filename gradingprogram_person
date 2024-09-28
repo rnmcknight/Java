@@ -1,9 +1,8 @@
-
 package gradesv2;
 
 /**
  *
- * @author xcalv
+ * @author rnmck
  */
 public class Person {
     private String firstName;
